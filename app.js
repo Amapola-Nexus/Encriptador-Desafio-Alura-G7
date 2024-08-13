@@ -301,6 +301,9 @@ const langOpt = document.getElementById('languages');
 
 const langData = {
     es: {
+        modalTitle: "Este encriptador se ha hecho para el desafío de Alura Latam y es mi primer proyecto de html/css/js finalizado.",
+        modalDescOne: "Puedes cambiar la llave de encriptación en la Configuración.",
+        modalDescTwo: "El proceso de decriptación solo funcionará si el texto ingresado contiene la llave actualmente configurada.",
         textAreaPlaceholder : "Inserte texto aquí",
         warning : "Solo se permiten minúsculas, sin tildes ni carácteres especiales",
         buttonEn : "Encriptar",
@@ -319,6 +322,9 @@ const langData = {
         keyGenButton: "Generar llave"
     },
     en: {
+        modalTitle: "This encryptor has been made for the challenge issued by Alura Latam, and is my first project made with html/css/js.",
+        modalDescOne: "You can change the encryption key in Settings.",
+        modalDescTwo: "The decryption process will only work if the inserted text contains the currently set encryption key.",
         textAreaPlaceholder : "Insert text here",
         warning : "Only lowercase letters allowed, without special characters",
         buttonEn : "Encrypt",
@@ -344,6 +350,9 @@ langOpt.addEventListener('change', (e) => {
 
 const setLanguage = (language) => {
     if (language == "en") {
+        document.getElementById('modal__title').innerText = langData.en.modalTitle;
+        document.getElementById('list_one').innerText = langData.en.modalDescOne;
+        document.getElementById('list_two').innerText = langData.en.modalDescTwo;
         userTextarea.placeholder = langData.en.textAreaPlaceholder;
         userWarning.innerText = langData.en.warning;
         btnEn.innerText = langData.en.buttonEn;
@@ -362,6 +371,9 @@ const setLanguage = (language) => {
         document.getElementById('randBtn').value = langData.en.keyGenButton;
 
     } else if (language == "es") {
+        document.getElementById('modal__title').innerText = langData.es.modalTitle;
+        document.getElementById('list_one').innerText = langData.es.modalDescOne;
+        document.getElementById('list_two').innerText = langData.es.modalDescTwo;
         userTextarea.placeholder = langData.es.textAreaPlaceholder;
         userWarning.innerText = langData.es.warning;
         btnEn.innerText = langData.es.buttonEn;
