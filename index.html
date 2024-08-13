@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptad0r</title>
+    <link rel="icon" type="image/vnd.icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="all">
+
+
+        <div class="bg">
+            <span class="bg__triangle"></span>
+        </div>
+
+
+        <div class="toast" id="toast">
+            <div class="toast_content">
+                <div class="message">
+                    <span class="copied_text" id="toast-msg">Copiado</span>
+                    <img class="icon-x-white" id="closeButtonToast" src="img/icon-x-white.png">
+                </div>
+            </div>
+            <div class="progress" id="progressBar"></div>
+        </div>
+
+
+        <dialog class="modal" id="modal">
+            <img class="icon-x-modal" id="closebutton" src="img/icon-x-white.png">
+            <h1 class="modal__title">Este encriptador se ha hecho para el desafío de Alura Latam y
+                es mi primer proyecto de html/css/js finalizado. </h1>
+            <ul>
+                <li class="modal__text">Puedes cambiar la llave de
+                    encriptación en la Configuración.</li>
+                <li class="modal__text">El proceso de decriptación solo 
+                    funcionará si el texto ingresado contiene la llave actualmente configurada.</li>
+            </ul>
+        </dialog>
+
+        <dialog class="modal" id="config-modal">
+            <img class="icon-x-modal" id="closebuttonConfig" src="img/icon-x-white.png">
+            <form class="config__form" id="configForm" tabindex=0>
+                <h2 id="config__title">Configuración</h2>
+                <p class="config__desc" id="config__desc">Los cambios se aplican automáticamente.</p>
+                <fieldset class="language_options">
+                    <label for="languages" id="lang__label">Lenguaje</label>
+                    <select name="languages" id="languages">
+                        <option value="es">Español (Spanish)</option>
+                        <option value="en">English (Inglés)</option>
+                    </select>
+                </fieldset>
+
+                <span class="input__note" id="input__note">(Solo se aceptan letras minúsculas,</br> sin tildes, carácteres especiales o espacios)</span>
+                <fieldset class="key__set">
+                    <label for="aKeyInput">a:</label> <input class="key__Input" id="aKeyInput" type="text" name="aKey" maxlength="5" value="ai">
+                        <p id="input__charCounter"><span id="aCount">0</span>/5</p>
+                    <label for="eKeyInput">e:</label> <input class="key__Input" id="eKeyInput" type="text" name="eKey" maxlength="5" value="enter">
+                        <p id="input__charCounter"><span id="eCount">0</span>/5</p>
+                    <label for="iKeyInput">i:</label> <input class="key__Input" id="iKeyInput" type="text" name="iKey" maxlength="5" value="imes">
+                        <p id="input__charCounter"><span id="iCount">0</span>/5</p>
+                    <label for="oKeyInput">o:</label> <input class="key__Input" id="oKeyInput" type="text" name="oKey" maxlength="5" value="ober">
+                        <p id="input__charCounter"><span id="oCount">0</span>/5</p>
+                    <label for="uKeyInput">u:</label> <input class="key__Input" id="uKeyInput" type="text" name="uKey" maxlength="5" value="ufat">
+                        <p id="input__charCounter"><span id="uCount">0</span>/5</p>
+                </fieldset>
+                <span class="input__warning" id="inputWarning">No se permiten campos vacíos</span>
+
+                <fieldset class="config__bottom">
+                    <input type="reset" value="Restablecer" id="restoreBtn">
+                    <input type="button" value="Generar llave" class="rand-btn" id="randBtn" onclick="randomBtn()">
+                </fieldset>
+            </form>
+        </dialog>
+
+
+    <header>
+        <h1 class="header__title"><span class="text__highlight" style="font-size: 2.5rem;">E</span>ncriptad<span class="text__highlight">0</span>r</h1>
+        <nav id="nav">
+            <div class="qb--div" id="btn" tabindex=0><img id="question-button" class="question-button" src="img/icon-question.png"></div>
+            <div class="cb--div" id="btn" tabindex=0><img id="config-button" src="img/icon-gear.png"></div>
+        </nav>
+    </header>
+
+
+    <section class="page">
+
+        <div class="content">
+            <div class="content__textarea">
+                <div class="no-decrypt not-show" id="noDecrypt">
+                    <div class="p__z-index">
+                        <p id="ND-Message">Este texto no se puede desencriptar</p>
+                            <img class="icon-x-white" id="closeND" src="img/icon-x-white.png">
+                    </div>
+                </div>
+                <textarea class="textarea" id="textarea__user" placeholder="Inserte texto aquí" autofocus maxlength="700"></textarea>
+                    <button class="clear__icon" onclick="eraseText();"><img src="img/icon-clear.png"></button>
+                    <span class="tooltip">Limpiar</span>
+                <div id="counter">
+                    <span id="charCount">700</span>
+                </div>
+            </div>
+            <div class="warning">
+                <img src="img/icon-x.png">
+                <p class="warning__text" id="warning-Text">Solo se permiten minúsculas, sin tildes ni carácteres especiales</p>
+            </div>
+            <section class="buttons" id="buttons">
+                    <button class="btn btn-en" id="btnEn" onclick="encrypt()" disabled>Encriptar</button> <button class="btn btn-de" id="btnDe" onclick="decrypt()" disabled>Desencriptar</button>
+            </section>
+        </div>
+
+
+        <div class="result">
+            <div class="result__before" id="resultBefore">
+                <h3 id="result-before--msg">El texto encriptado/desencriptado aparecerá aquí</h3>
+                <img src="img/keyhole-06.svg" class="result__keyhole">
+                <img src="img/key-06.svg" class="result__key">
+            </div>
+            <div class="result__area" id="resultAfter" style="display: none">
+                <textarea class="result__textarea" id="result__textarea" readonly></textarea>
+                    <button class="clear__icon" onclick="eraseResult();"><img src="img/icon-clear.png"></button>
+                    <span class="tooltip">Limpiar</span>
+                    <button onclick="copyResult();" class="copyBtn" id="copyBtn" disabled>Copiar</button>
+                    <div class="result-textarea__grad"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="link__a"><a href="#" class="linkedin">LinkedIn</a></div>
+        <div class="link__a"><a href="https://github.com/Amapola-Nexus" class="github">GitHub</a></div>
+        <p>© Amapola, 2024</p>
+    </footer>
+
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
