@@ -305,6 +305,7 @@ const langData = {
         modalDescOne: "Puedes cambiar la llave de encriptación en la Configuración.",
         modalDescTwo: "El proceso de decriptación solo funcionará si el texto ingresado contiene la llave actualmente configurada.",
         textAreaPlaceholder : "Inserte texto aquí",
+        tooltipText: "Limpiar",
         warning : "Solo se permiten minúsculas, sin tildes ni carácteres especiales",
         buttonEn : "Encriptar",
         buttonDe : "Desencriptar",
@@ -326,6 +327,7 @@ const langData = {
         modalDescOne: "You can change the encryption key in Settings.",
         modalDescTwo: "The decryption process will only work if the inserted text contains the currently set encryption key.",
         textAreaPlaceholder : "Insert text here",
+        tooltipText: "Clear",
         warning : "Only lowercase letters allowed, without special characters",
         buttonEn : "Encrypt",
         buttonDe : "Decrypt",
@@ -354,6 +356,7 @@ const setLanguage = (language) => {
         document.getElementById('list_one').innerText = langData.en.modalDescOne;
         document.getElementById('list_two').innerText = langData.en.modalDescTwo;
         userTextarea.placeholder = langData.en.textAreaPlaceholder;
+        document.getElementById('tooltip') = langData.en.tooltipText;
         userWarning.innerText = langData.en.warning;
         btnEn.innerText = langData.en.buttonEn;
         btnDe.innerText = langData.en.buttonDe;
@@ -375,6 +378,7 @@ const setLanguage = (language) => {
         document.getElementById('list_one').innerText = langData.es.modalDescOne;
         document.getElementById('list_two').innerText = langData.es.modalDescTwo;
         userTextarea.placeholder = langData.es.textAreaPlaceholder;
+        document.getElementById('tooltip') = langData.es.tooltipText;
         userWarning.innerText = langData.es.warning;
         btnEn.innerText = langData.es.buttonEn;
         btnDe.innerText = langData.es.buttonDe;
