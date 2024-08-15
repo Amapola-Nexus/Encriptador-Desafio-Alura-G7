@@ -356,7 +356,7 @@ const setLanguage = (language) => {
         document.getElementById('list_one').innerText = langData.en.modalDescOne;
         document.getElementById('list_two').innerText = langData.en.modalDescTwo;
         userTextarea.placeholder = langData.en.textAreaPlaceholder;
-        document.getElementById('tooltip') = langData.en.tooltipText;
+        document.getElementById('tooltip').innerText = langData.en.tooltipText;
         userWarning.innerText = langData.en.warning;
         btnEn.innerText = langData.en.buttonEn;
         btnDe.innerText = langData.en.buttonDe;
@@ -378,7 +378,7 @@ const setLanguage = (language) => {
         document.getElementById('list_one').innerText = langData.es.modalDescOne;
         document.getElementById('list_two').innerText = langData.es.modalDescTwo;
         userTextarea.placeholder = langData.es.textAreaPlaceholder;
-        document.getElementById('tooltip') = langData.es.tooltipText;
+        document.getElementById('tooltip').innerText = langData.es.tooltipText;
         userWarning.innerText = langData.es.warning;
         btnEn.innerText = langData.es.buttonEn;
         btnDe.innerText = langData.es.buttonDe;
